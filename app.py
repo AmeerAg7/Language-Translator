@@ -1,11 +1,17 @@
+import os
+
 from flask import Flask,request,render_template
 from datetime import date
 import requests
 import json
+from dotenv import load_dotenv
+
+
 
 global apikey,host
 
-apikey = "PASTE YOUR API KEY HERE"
+load_dotenv()
+apikey = os.getenv("API_KEY")
 host = "google-translate1.p.rapidapi.com"
 
 def list_all_languages():
