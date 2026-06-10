@@ -1,0 +1,28 @@
+name: translator ci pipeline
+
+on:
+  push:
+    branches: 
+    - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.13'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Check Python syntax #validate application
+      run: python -m py_compile app.py
+
+    - name: Docker Image build
+      run: docker build -t translator-app .
