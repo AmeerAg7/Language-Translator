@@ -25,7 +25,7 @@ jobs:
       run: python -m py_compile app.py
 
     - name: Check Flask app imports
-      run: python -c "from app import app; print(app)"
-
+      run: python -c "from app import app; assert app is not None"
+      
     - name: Docker Image build
       run: docker build -t translator-app .
