@@ -21,7 +21,7 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements.txt
 
-    - name: Check Python syntax #validate application
+    - name: Check Python syntax #validate pyth syntax
       run: python -m py_compile app.py
 
     - name: Docker Image build
