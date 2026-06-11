@@ -24,5 +24,8 @@ jobs:
     - name: Check Python syntax #validate pyth syntax
       run: python -m py_compile app.py
 
+    - name: Check Flask app imports
+      run: python -c "from app import app; print(app)"
+
     - name: Docker Image build
       run: docker build -t translator-app .
